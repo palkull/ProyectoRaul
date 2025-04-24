@@ -33,7 +33,7 @@ function Navbar() {
 
   const handleLogout = async () => {
     if (user) {
-      await fetch('http://localhost:5000/api/auth/logout', {
+      await fetch('https://proyectoraul-back.onrender.com/api/auth/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.id }),

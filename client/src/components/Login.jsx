@@ -68,7 +68,7 @@ function Login() {
       return;
     }
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, captcha: captchaValue }),
@@ -102,7 +102,7 @@ function Login() {
     try {
       // Enviamos la solicitud al endpoint, pasando el correo que el usuario quiere recuperar
       // Esto hará que el back‑end genere y envíe el código a recoveryEmail
-      const res = await fetch('http://localhost:5000/api/auth/recover', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/auth/recover', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: recoveryEmail }),
@@ -126,7 +126,7 @@ function Login() {
     e.preventDefault();
     try {
       // Verificamos el código que el usuario ingresó
-      const res = await fetch('http://localhost:5000/api/auth/verifyRecoveryCode', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/auth/verifyRecoveryCode', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: recoveryEmail, recoveryCode }),
@@ -154,7 +154,7 @@ function Login() {
     }
     try {
       // Enviamos la nueva contraseña y el correo que estamos recuperando
-      const res = await fetch('http://localhost:5000/api/auth/resetPassword', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/auth/resetPassword', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: recoveryEmail, newPassword }),

@@ -12,7 +12,7 @@ const Classes = () => {
   // Función para obtener las clases del backend
   const fetchClases = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/clases');
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/clases');
       const data = await res.json();
       console.log("Clases recibidas:", data);
       setClases(data);
@@ -33,7 +33,7 @@ const Classes = () => {
     }
     try {
       const user = JSON.parse(localStorage.getItem('user'));
-      const res = await fetch('http://localhost:5000/api/clases', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/clases', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -81,7 +81,7 @@ const ClaseDetail = () => {
   // --------------------------------------------------------------------------
   const fetchClaseDetail = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/clases/${id}`);
+      const res = await fetch(`https://proyectoraul-back.onrender.com/api/clases/${id}`);
       const data = await res.json();
       setClase(data);
       if (data && data.creador_id === user.id) {
@@ -94,7 +94,7 @@ const ClaseDetail = () => {
 
   const fetchEnrollment = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/clases/enrollment/${id}/${user.id}`);
+      const res = await fetch(`https://proyectoraul-back.onrender.com/api/clases/enrollment/${id}/${user.id}`);
       if (res.ok) {
         const data = await res.json();
         setEnrollment(data);
@@ -108,7 +108,7 @@ const ClaseDetail = () => {
 
   const fetchTareas = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/tareas/${id}`);
+      const res = await fetch(`https://proyectoraul-back.onrender.com/api/tareas/${id}`);
       const data = await res.json();
       setTareas(data);
     } catch (error) {
@@ -119,14 +119,14 @@ const ClaseDetail = () => {
   const fetchSubmissions = async (tareaId) => {
     try {
       if (enrollment && enrollment.role === 'admin') {
-        const res = await fetch(`http://localhost:5000/api/calificacion/task/${tareaId}`);
+        const res = await fetch(`https://proyectoraul-back.onrender.com/api/calificacion/task/${tareaId}`);
         if (res.ok) {
           const data = await res.json();
           const submissions = Array.isArray(data) ? data : (data ? [data] : []);
           setCalificaciones(prev => ({ ...prev, [tareaId]: submissions }));
         }
       } else {
-        const res = await fetch(`http://localhost:5000/api/calificacion/${tareaId}/${user.id}`);
+        const res = await fetch(`https://proyectoraul-back.onrender.com/api/calificacion/${tareaId}/${user.id}`);
         if (res.ok) {
           const data = await res.json();
           setCalificaciones(prev => ({ ...prev, [tareaId]: data }));
@@ -145,7 +145,7 @@ const ClaseDetail = () => {
   const handleJoinClase = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/clases/join', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/clases/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -178,7 +178,7 @@ const ClaseDetail = () => {
     formData.append('tarea_id', tareaId);
     formData.append('usuario_id', user.id);
     try {
-      const res = await fetch('http://localhost:5000/api/calificacion', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/calificacion', {
         method: 'POST',
         body: formData
       });
@@ -195,7 +195,7 @@ const ClaseDetail = () => {
     const grade = newGrades[`${tareaId}_${submissionId}`];
     if (!grade) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/calificacion/${submissionId}`, {
+      const res = await fetch(`https://proyectoraul-back.onrender.com/api/calificacion/${submissionId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ calificacion: grade })
@@ -212,7 +212,7 @@ const ClaseDetail = () => {
     e.preventDefault();
     if (!newTaskName || !newTaskDeadline) return;
     try {
-      const res = await fetch('http://localhost:5000/api/tareas', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/tareas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -238,7 +238,7 @@ const ClaseDetail = () => {
   const handleSendMessage = async () => {
     if (!messageToCreator.trim()) return;
     try {
-      const res = await fetch('http://localhost:5000/api/mensaje', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/mensaje', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -407,7 +407,7 @@ const ClaseDetail = () => {
                             <p><strong>Alumno:</strong> {submission.nombre || submission.usuario_id}</p>
                             <p>
                               <strong>Archivo:</strong>{' '}
-                              <a href={`http://localhost:5000/${submission.archivo}`} target="_blank" rel="noopener noreferrer">
+                              <a href={`https://proyectoraul-back.onrender.com/${submission.archivo}`} target="_blank" rel="noopener noreferrer">
                                 Descargar
                               </a>
                             </p>

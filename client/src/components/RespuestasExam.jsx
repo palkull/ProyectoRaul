@@ -14,7 +14,7 @@ const RespuestasExam = () => {
   useEffect(() => {
     const verificar = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/respuestas-estudiante/${id}/${user.id}`);
+        const res = await fetch(`https://proyectoraul-back.onrender.com/api/respuestas-estudiante/${id}/${user.id}`);
         const data = await res.json();
         setYaRespondido(data.yaRespondido);
       } catch (error) {
@@ -30,7 +30,7 @@ const RespuestasExam = () => {
   // Cargar preguntas si no ha respondido
   useEffect(() => {
     if (!yaRespondido) {
-      fetch(`http://localhost:5000/api/examen-preguntas/${id}`)
+      fetch(`https://proyectoraul-back.onrender.com/api/examen-preguntas/${id}`)
         .then(res => res.json())
         .then(data => setPreguntas(data))
         .catch(err => console.error('Error al obtener preguntas:', err));
@@ -54,7 +54,7 @@ const RespuestasExam = () => {
       }));
 
       for (const r of payload) {
-        await fetch('http://localhost:5000/api/respuestas-estudiante', {
+        await fetch('https://proyectoraul-back.onrender.com/api/respuestas-estudiante', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(r)
