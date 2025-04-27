@@ -303,7 +303,6 @@ function Login() {
                   ref={recaptchaRef}
                   sitekey="6Leu7CUrAAAAAENddssgMI3NBFrW8Eov3KgyM_0h"
                   onChange={handleCaptchaChange}
-                  onErrored={handleCaptchaErrored}
                   onExpired={handleCaptchaExpired}
                 />
               </div>
