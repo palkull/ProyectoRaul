@@ -13,7 +13,7 @@ function Breadcrumbs() {
   useEffect(() => {
     // Para rutas de clases: /classes/:id
     if (segments[0] === 'classes' && segments[1]) {
-      fetch(`http://localhost:5000/api/clases/${segments[1]}`)
+      fetch(`https://proyectoraul-back.onrender.com/api/clases/${segments[1]}`)
         .then(res => res.json())
         .then(data => {
           if (data.materia) setClassName(data.materia);
@@ -28,7 +28,7 @@ function Breadcrumbs() {
       const possibleId = parts[parts.length - 1];
 
       if (!isNaN(possibleId)) {
-        fetch(`http://localhost:5000/api/exams/${possibleId}`)
+        fetch(`https://proyectoraul-back.onrender.com/api/exams/${possibleId}`)
           .then(res => {
             if (!res.ok) {
               throw new Error('No encontrado');
@@ -42,7 +42,7 @@ function Breadcrumbs() {
           })
           .catch(err => {
             // Fallback: obtenemos la lista de exámenes y filtramos por id
-            fetch('http://localhost:5000/api/exams')
+            fetch('https://proyectoraul-back.onrender.com/api/exams')
               .then(res => res.json())
               .then(data => {
                 const examFound = data.find(item => item.exam_id.toString() === possibleId);

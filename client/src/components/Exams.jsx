@@ -24,7 +24,7 @@ const Exams = () => {
 
   const fetchExams = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/exams');
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/exams');
       const data = await res.json();
       setExams(data);
     } catch (err) {
@@ -34,7 +34,7 @@ const Exams = () => {
 
   const fetchAdminClasses = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/clases/admin/${user.id}`);
+      const res = await fetch(`https://proyectoraul-back.onrender.com/api/clases/admin/${user.id}`);
       const data = await res.json();
       setAdminClasses(data);
     } catch (err) {
@@ -49,7 +49,7 @@ const Exams = () => {
   const handleCreateExam = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/exams', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/exams', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, creador_id: user.id })
@@ -77,7 +77,7 @@ const Exams = () => {
 
   const verifyExamPassword = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/exams/verify', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/exams/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
