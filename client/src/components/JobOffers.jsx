@@ -26,7 +26,7 @@ function JobOffers() {
 
   // Cargar todas las ofertas al montar el componente
   useEffect(() => {
-    fetch('/api/jobs')
+    fetch('https://proyectoraul-back.onrender.com/api/jobs')
       .then((res) => {
         if (!res.ok) throw new Error('Error al obtener las ofertas');
         return res.json();
@@ -124,7 +124,7 @@ function JobOffers() {
   const handleSubmitJob = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/jobs', {
+      const res = await fetch('https://proyectoraul-back.onrender.com/api/jobs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newJob),
