@@ -301,7 +301,7 @@ function Login() {
               <div className="recaptcha-container">
                 <ReCAPTCHA
                   ref={recaptchaRef}
-                  sitekey="6Leu7CUrAAAAAENddssgMI3NBFrW8Eov3KgyM_0h"
+                  sitekey="6LeW0fAqAAAAAKhW6gWux26t_euhE_Qg3VP4NVBv"
                   onChange={handleCaptchaChange}
                   onExpired={handleCaptchaExpired}
                 />
